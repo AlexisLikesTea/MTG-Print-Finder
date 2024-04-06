@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import MTGCard from "./Components/MTGCard";
 import { MagicCard } from "./Types/types";
 import "./Styles/MTGCarousel.css";
 import SortingButtons from "./Components/SortingButtons";
@@ -25,35 +26,23 @@ function MTGCarousel(props: MTGCarouselProps) {
     });
     setData(orderedData);
   }
-
   return (
     <>
+    <div className="button-div">
       {data.length > 0 && <SortingButtons sortingByDate={orderByDate} />}
+      </div>
       <div key="container" className="container">
         {data ? (
           data.map((i: MagicCard) => (
-            <div id={i.id.toString()} key={i.scryfallID} className="card">
-              {i.card_faces && i.layout != "adventure" ? (
-                <img
-                  className="card-img"
-                  src={i.card_faces[0].image_uris.large}
-                  alt="Card image cap"
-                />
-              ) : (
-                <img
-                  className="card-img"
-                  src={i.image_uris.large}
-                  alt="Card image cap"
-                />
-              )}
-
-              <div className="card-body">
-                <h5 className="card-title"></h5>
-                <p className="card-text">
-                  <strong>Set: </strong>
-                  {i.set_name}
-                </p>
-              </div>
+            <div key={i.scryfallID} className="card">
+              <MTGCard
+                key={i.id}
+                id={i.id}
+                image_uris={i.image_uris}
+                set_name={i.set_name}
+                layout={i.layout}
+                card_faces={i.card_faces}
+              />
             </div>
           ))
         ) : (

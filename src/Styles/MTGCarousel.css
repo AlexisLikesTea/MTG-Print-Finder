@@ -26,3 +26,17 @@
 .card-img{
   width: 200px;
 }
+
+.button-div{
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.flip-button{
+  position: absolute;
+  color:white;
+    z-index: 1;
+  }

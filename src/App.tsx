@@ -32,9 +32,10 @@ function App() {
       await fetch(`https://api.scryfall.com/cards/search?q=%21"${inputValue}"&unique=prints
     `);
     if (response.ok) {
+      setFuzzyResponse(``);
+      setInvalidInput(false);
       const maigicCardResponse = await response.json();
       setData(maigicCardResponse.data);
-      console.log(maigicCardResponse.data);
     } else {
       failedResponse();
     }
@@ -60,10 +61,10 @@ function App() {
       <div className="top-of-page">
         <p id="title">Enter a card name below!</p>
         <input
-          placeholder="e.g Sol Ring"
           id="card-input"
           value={inputValue}
           onChange={handleInputChange}
+          placeholder="Sol Ring"
         ></input>
         <button onClick={initialSubmit}>Submit</button>
       </div>
@@ -76,7 +77,7 @@ function App() {
           ?
         </h3>
       ) : invalidInput ? (
-        <p>Card not found!</p>
+        <p className="card-not-found-text">Card not found!</p>
       ) : (
         ``
       )}

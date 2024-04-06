@@ -9,3 +9,11 @@
 .card-text{
     text-align: center;
 }
+
+
+.card-not-found-text {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    font-size: x-large;
+}
